@@ -1,0 +1,255 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Revenue Prediction</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Movie Revenue Prediction</h1>
+        </header>
+
+        <main>
+            <div class="container">
+                <form id="movie-form">
+                <div class="form-group2">
+                    <label for="budget">Budget(in Rs):</label>
+                    <input type="number" id="budget" name="budget" required onblur="validateBudget()">
+                </div>
+
+                <div class="form-group2">
+                    <div class="form-group">
+                        <label for="popularity">Popularity:</label>
+                        <input type="number" id="popularity" name="popularity" required onblur="validatePopularity()">
+                    </div>
+                </div>
+
+                <div class="form-group2">
+                    <label for="runtime">Runtime:</label>
+                    <input type="number" id="runtime" name="runtime" required onblur="validateRuntime()">
+                </div>
+
+                <div class="form-group2">
+                    <label for="vote_average">Vote Average:</label>
+                    <input type="number" step="0.1" id="vote_average" name="vote_average" required onblur="validateVoteAverage()">
+                </div>
+
+                <div class="form-group1">
+                    <label for="vote_count">Vote Count:</label>
+                    <input type="number" id="vote_count" name="vote_count" required onblur="validateVoteCount()">
+                </div>
+                <div class="form-group1">
+                    <label for="genre">Genre:</label>
+                    <select id="genre" name="genre">
+                        <option value="">Select genre</option>
+                        <option value="0">Drama</option>
+                        <option value="2">Science Fiction</option>
+                        <option value="3">Horror</option>
+                        <option value="4">Action</option>
+                        <option value="5">Adventure</option>
+                        <option value="6">Animation</option>
+                        <option value="7">Comedy</option>
+                        <option value="8">Crime</option>
+                        <option value="9">Romance</option>
+                        <option value="10">Family</option>
+                        <option value="11">Thriller</option>
+                        <option value="12">Mystery</option>
+                        <option value="13">Fantasy</option>
+                        <option value="14">War</option>
+                        <option value="15">History</option>
+                        <option value="16">Western</option>
+                        <option value="17">Music</option>
+                        <option value="18">Documentary</option>
+                        
+                    </select>
+                </div>
+                
+                <div class="form-group1">
+                    <label for="original_language">Original Language:</label>
+                    <select id="original_language" name="original_language" required>
+                        <option value="">Select Language</option>
+                        <option value="0">English</option>
+                        <option value="1">Chinese (Simplified)</option>
+                        <option value="2">Ukrainian</option>
+                        <option value="3">Hindi</option>
+                        <option value="4">French</option>
+                        <option value="5">Finnish</option>
+                        <option value="6">Russian</option>
+                        <option value="7">Japanese</option>
+                        <option value="8">Korean</option>
+                        <option value="9">Italian</option>
+                        <option value="10">Spanish</option>
+                        <option value="11">Norwegian</option>
+                        <option value="12">Chinese (Traditional)</option>
+                        <option value="13">Telugu</option>
+                        <option value="14">Portuguese</option>
+                        <option value="15">Thai</option>
+                        <option value="16">Indonesian</option>
+                        <option value="17">Swedish</option>
+                        <option value="18">German</option>
+                        <option value="19">Dutch</option>
+                        <option value="20">Danish</option>
+                        <option value="21">Arabic</option>
+                        <option value="22">Greek</option>
+                        <option value="23">Norwegian Bokmål</option>
+                        <option value="24">Galician</option>
+                        <option value="25">Kannada</option>
+                        <option value="26">Czech</option>
+                        <option value="27">Persian</option>
+                        <option value="28">Tamil</option>
+                        <option value="29">Polish</option>
+                    </select>
+                </div>
+    
+                <div class="form-group1">
+                    <label for="release_date">Release Date:</label>
+                    <input type="date" id="release_date" name="release_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="actor">Actor:</label>
+                    <!--For documentation purposes, the dataset encompasses over 300 actors, actresses, and directors, though not every individual is explicitly listed.--> 
+                    <select id="actor" name="actor" onchange="fetchActorPopularity()">
+                        <option value="">Select Actor</option>
+                        <option value="Tom Hanks">Tom Hanks</option>
+                        <option value="Denzel Washington">Denzel Washington</option>
+                        <option value="Robert De Niro">Robert De Niro</option>
+                        <option value="Jack Nicholson">Jack Nicholson</option>
+                        <option value="Al Pacino">Al Pacino</option>
+                        <option value="Morgan Freeman">Morgan Freeman</option>
+                        <option value="Will Smith">Will Smith</option>
+                        <option value="Leonardo DiCaprio">Leonardo DiCaprio</option>
+                        <option value="Brad Pitt">Brad Pitt</option>
+                        <option value="Matt Damon">Matt Damon</option>
+                        <option value="George Clooney">George Clooney</option>
+                        <option value="Dwayne Johnson">Dwayne Johnson</option>
+                        <option value="Mark Wahlberg">Mark Wahlberg</option>
+                        <option value="Ryan Reynolds">Ryan Reynolds</option>
+                        <option value="Samuel L. Jackson">Samuel L. Jackson</option>
+                        <option value="Bruce Willis">Bruce Willis</option>
+                        <option value="Tom Cruise">Tom Cruise</option>
+                        <option value="Chris Evans">Chris Evans</option>
+                        <option value="Robert Downey Jr.">Robert Downey Jr.</option>
+                        <option value="Hugh Jackman">Hugh Jackman</option>
+                        <option value="Christian Bale">Christian Bale</option>
+                        <option value="Chris Pratt">Chris Pratt</option>
+                        <option value="Vin Diesel">Vin Diesel</option>
+                        <option value="Ben Affleck">Ben Affleck</option>
+                        <option value="Jeremy Renner">Jeremy Renner</option>
+                    </select>
+                    <div id="actorDetails">
+                        <div id="actorPopularity"></div>
+                        <div id="actorImage"></div>
+                        <div id="actorMovies"></div> 
+                    </div> 
+                
+                    <div class="form-group">
+                        <label for="actress">Actress:</label>
+                        <select id="actress" name="actress" onchange="fetchActressPopularity()">
+                            <option value="">Select Actress</option>
+                            <option value="Zoe Saldaña">Zoe Saldaña</option>
+                            <option value="Keira Knightley">Keira Knightley</option>
+                            <option value="Léa Seydoux">Léa Seydoux</option>
+                            <option value="Anne Hathaway">Anne Hathaway</option>
+                            <option value="Lynn Collins">Lynn Collins</option>
+                            <option value="Kirsten Dunst">Kirsten Dunst</option>
+                            <option value="Mandy Moore">Mandy Moore</option>
+                            <option value="Scarlett Johansson">Scarlett Johansson</option>
+                            <option value="Emma Watson">Emma Watson</option>
+                            <option value="Gal Gadot">Gal Gadot</option>
+                            <option value="Kate Bosworth">Kate Bosworth</option>
+                            <option value="Olga Kurylenko">Olga Kurylenko</option>
+                            <option value="Helena Bonham Carter">Helena Bonham Carter</option>
+                            <option value="Amy Adams">Amy Adams</option>
+                            <option value="Georgie Henley">Georgie Henley</option>
+                            <option value="Penélope Cruz">Penélope Cruz</option>
+                            <option value="Emma Thompson">Emma Thompson</option>
+                            <option value="Emma Stone">Emma Stone</option>
+                            <option value="Cate Blanchett">Cate Blanchett</option>
+                            <option value="Nicole Kidman">Nicole Kidman</option>
+                            <option value="Naomi Watts">Naomi Watts</option>
+                            <option value="Kate Winslet">Kate Winslet</option>
+                            <option value="Rihanna">Rihanna</option>
+                            <option value="Bryce Dallas Howard">Bryce Dallas Howard</option>
+                            </select>
+                            <div id="actressDetails">
+                                <div id="actressPopularity"></div>
+                                <div id="actressImage"></div> 
+                                <div id="actressMovies"></div></div>
+                    </div>
+            
+                <div class="form-group">
+                    <label for="director">Director:</label>
+                    <select id="director" name="director" onchange="fetchDirectorPopularity()">
+                        <option value="">Select Director</option>
+                        <option value="Christopher Nolan">Christopher Nolan</option>
+                        <option value="Gareth Edwards">Gareth Edwards</option>
+                        <option value="Emma Tammi">Emma Tammi</option>
+                        <option value="Scott Waugh">Scott Waugh</option>
+                        <option value="Christopher McQuarrie">Christopher McQuarrie</option>
+                        <option value="Louis Leterrier">Louis Leterrier</option>
+                        <option value="Antoine Fuqua">Antoine Fuqua</option>
+                        <option value="Francis Lawrence">Francis Lawrence</option>
+                        <option value="Kevin Greutert">Kevin Greutert</option>
+                        <option value="Nia DaCosta">Nia DaCosta</option>
+                        <option value="Alejandro Gómez Monteverde">Alejandro Gómez Monteverde</option>
+                        <option value="Ángel Manuel Soto">Ángel Manuel Soto</option>
+                        <option value="Ben Wheatley">Ben Wheatley</option>
+                        <option value="Michael Chaves">Michael Chaves</option>
+                        <option value="Neill Blomkamp">Neill Blomkamp</option>
+                        <option value="Peter Sohn">Peter Sohn</option>
+                        <option value="Nimród Antal">Nimród Antal</option>
+                        <option value="Cal Brunker">Cal Brunker</option>
+                        <option value="Steven Caple Jr.">Steven Caple Jr.</option>
+                        <option value="David Gordon Green">David Gordon Green</option>
+                        <option value="Greta Gerwig">Greta Gerwig</option>
+                        <option value="Wang Yunfei">Wang Yunfei</option>
+                        <option value="Joaquim Dos Santos">Joaquim Dos Santos</option>
+                        <option value="Michael Jelenic">Michael Jelenic</option>
+                        <option value="Jeff Rowe">Jeff Rowe</option>
+                        <option value="Pete Docter">Pete Docter</option>
+                        <option value="Michael Philippou">Michael Philippou</option>
+                        <option value="Walt Dohrn">Walt Dohrn</option>
+                        <option value="Mathieu Kassovitz">Mathieu Kassovitz</option>
+                        <option value="Chad Stahelski">Chad Stahelski</option>
+                        <option value="John Luessenhop">John Luessenhop</option>
+                        <option value="Oleksandra Ruban">Oleksandra Ruban</option>
+                        <option value="David Fincher">David Fincher</option>
+                        <option value="James Cameron">James Cameron</option>
+                        <option value="Castille Landon">Castille Landon</option>
+                        <option value="Andy Muschietti">Andy Muschietti</option>
+                        <option value="Jon Watts">Jon Watts</option>
+                        <option value="Christopher Zalla">Christopher Zalla</option>
+                        <option value="James Mangold">James Mangold</option>
+                        <option value="Rob Marshall">Rob Marshall</option>
+                        <option value="James Gunn">James Gunn</option>
+                        <option value="Joel Crawford">Joel Crawford</option>
+                        <option value="Anthony Russo">Anthony Russo</option>
+                        <option value="Lee Unkrich">Lee Unkrich</option>
+                        <option value="Martin Scorsese">Martin Scorsese</option>
+                        
+                    </select>
+
+                <div id="directorDetails"> 
+                    <div id="directorPopularity"></div>
+                    <div id="directorImage"></div>
+                    <div id="directorMovies"></div> </div>
+                </div>
+
+                <div class="form-group">
+                    
+                    <button type="button" id="predictRevenueButton" onclick="predictRevenue(event)">Predict Revenue</button>
+                </div>
+            </form>
+
+            <div id="prediction-result"></div>
+        </div>
+    <footer>
+        <p>&copy; 2023 Movie Revenue Prediction</p>
+    </footer>
+        </main>
+ 
+    </body>
+    </html>

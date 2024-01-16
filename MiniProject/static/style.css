@@ -1,0 +1,119 @@
+    body {
+        background-image: url('2.jpg');
+        background-size: cover; 
+        background-position: center center; 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .container {
+        width: 500px;
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .form-group1 {
+        width: 300px;
+        margin-bottom: 10px;
+
+    }
+    .form-group {
+        text-align: center;
+        margin-bottom: 10px;
+
+    }
+    .form-group2 {
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-right: 40px;
+        width: 200px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    #prediction-result {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .prediction-box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: #f9f9f9;
+    }
+
+    #actorImage img,
+    #actressImage img,
+    #directorImage img {
+        width: 100px; 
+        height: 150px;
+        object-fit: cover; 
+        border-radius: 5px;
+    }
+    h1 {
+        
+        border-bottom: 4px solid #000; 
+        display: inline-block; 
+        padding-bottom: 5px;
+        color: white; 
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }footer {
+        margin-top: auto; 
+        text-align: center;
+        color: #ccc;
+    }
+    #actorMovies ul {
+        list-style-type: none;
+        padding: 0; 
+    }
+
+    #actorMovies li {
+        margin-bottom: 10px; 
+    }
+    #actressMovies ul {
+        list-style-type: none; 
+        padding: 0;
+    }
+
+    #actressMovies li {
+        margin-bottom: 10px; 
+    }
+    #directorMovies ul {
+        list-style-type: none; 
+        padding: 0; 
+    }
+
+    #directorMovies li {
+        margin-bottom: 10px; 
+    }
+
